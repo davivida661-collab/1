@@ -1,0 +1,11 @@
+{
+  "discord_token": "COLE_SEU_TOKEN_AQUI",
+  "request_timeout_seconds": 10,
+  "max_concurrency": 8,
+  "servers": [
+    {
+      "name": "Servidor Cristão Exemplo",
+      "address": "play.exemplo.com"
+    }
+  ]
+}
