@@ -1,60 +1,74 @@
-# 🖥️ Remote Desktop Protocol
+# 🤖 Bot Discord para localizar jogadores em servidores cristãos de Minecraft
 
-Access a **Windows 11 Remote Desktop** with **free 4GB/s internet speed** instantly!  
-This project provides a quick and reliable way to connect to a powerful remote environment for development, testing, or personal use. 🚀
+Este projeto entrega um bot Discord completo que busca jogadores de Minecraft por **nome** ou **UUID** e informa em quais servidores cristãos configurados eles estão online.
 
----
+## ✨ Funcionalidades
 
-## 📜 Description
+- 🔎 Pesquisa por **nome** ou **UUID** do Minecraft.
+- 📋 Lista servidores cristãos configurados.
+- ⚡ Consulta rápida usando a API pública do `mcsrvstat.us`.
+- 🔐 Configuração simples via arquivo `config.json`.
+- 🧵 Controle de concorrência para evitar bloqueios em muitas consultas.
 
-The **Remote Desktop Protocol (RDP)** project allows users to connect to a **Windows 11** virtual machine in the cloud, offering:
+## ✅ Pré-requisitos
 
-- ⚡ **4GB/s Internet Speed**  
-- 💻 **Windows 11 OS**  
-- 🌍 **Free and Easy Remote Access**  
-- 🔒 **Secure and Fast Connection**  
+- Python 3.10+
+- Token de bot Discord (portal de desenvolvedores da Discord)
 
----
+## 🚀 Instalação
 
-## ⚙️ Setup & Installation
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-Getting started is super easy! Just follow the tutorial below:
+## ⚙️ Configuração
 
-🎥 **Watch the setup video:**  
-👉 [How to Set Up Remote Desktop Protocol (YouTube)](https://youtu.be/bBxejfjInzc)
+1. Copie o arquivo de exemplo:
 
----
+```bash
+cp config.example.json config.json
+```
 
-## 🧰 Features
+2. Preencha o `config.json` com:
 
-- 💨 Blazing-fast internet connection  
-- 🪟 Full Windows 11 experience  
-- 🌐 Remote access from any device  
-- 🧩 Simple and lightweight setup  
-- 🔧 No complex configurations needed  
+- Seu **token** do bot Discord.
+- Lista de servidores cristãos que deseja monitorar.
 
----
+Exemplo:
 
-## 🧑‍💻 Usage
+```json
+{
+  "discord_token": "COLE_SEU_TOKEN_AQUI",
+  "request_timeout_seconds": 10,
+  "max_concurrency": 8,
+  "servers": [
+    {
+      "name": "Servidor Cristão Exemplo",
+      "address": "play.exemplo.com"
+    }
+  ]
+}
+```
 
-1. Follow the video tutorial above.  
-2. Launch your RDP session.  
-3. Enjoy seamless Windows 11 experience with lightning-fast internet.  
+## ▶️ Como executar
 
----
+```bash
+python src/bot.py
+```
 
+## 🧩 Comandos Discord
 
-## 📄 License
+- `/procurar jogador:<nome_ou_uuid>` → Procura o jogador nos servidores cristãos configurados.
+- `/servidores` → Lista os servidores configurados.
 
-This project is open-source — feel free to use, modify, and share it responsibly.  
+## 📝 Observações importantes
 
----
+- A busca por jogadores depende do **status público** do servidor. Alguns servidores podem ocultar listas de jogadores.
+- Não existe API oficial que revele em qual servidor um jogador está; o bot varre apenas os servidores configurados.
+- Caso o servidor esteja offline ou bloqueie listas de jogadores, ele será ignorado na resposta.
 
-## 💬 Contact
+## 📄 Licença
 
-If you have questions, suggestions, or feedback, feel free to open an issue or comment on the YouTube video!  
-📺 [Watch Tutorial on YouTube](https://youtu.be/bBxejfjInzc)
-
----
-
-⭐ **If you find this project helpful, don’t forget to star the repo!**
+Este projeto é open-source. Use, modifique e compartilhe à vontade.
